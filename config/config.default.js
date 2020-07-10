@@ -52,6 +52,9 @@ module.exports = appInfo => {
     credentials: true,
     allowMethods: 'GET, HEAD, PUT, POST, DELETE, PATCH, OPTIONS',
   };
+  config.jwt = {
+    secret: 'yann666',
+  };
   return {
     ...config,
     ...userConfig,
