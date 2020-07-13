@@ -14,15 +14,15 @@ class MainController extends Controller {
               "' AND password = '" + password + "'";
     const res = await this.app.mysql.query(sql);
     console.log('登陆信息', res);
-    if (res.length > 0) {
+    if (res.length) {
       const token = this.app.jwt.sign({
         username: res[0].userName,
       }, this.app.config.jwt.secret);
-      const openId = new Date().getTime();
-      this.ctx.session.openId = { openId };
-      this.ctx.body = { data: '登陆成功', openId, token, userName: res[0].userName };
+      // const openId = new Date().getTime();
+      // this.ctx.session.openId = { openId };
+      this.ctx.body = { msg: '登陆成功', token, userName: res[0].userName };
     } else {
-      this.ctx.body = { data: '登陆失败' };
+      this.ctx.body = { msg: '登陆失败' };
     }
   }
 

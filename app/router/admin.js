@@ -3,9 +3,7 @@
 module.exports = app => {
   // require('./router/default')(app);
   const { router, controller, jwt } = app;
-  const adminauth = app.middleware.adminauth();
-
-  console.log('adminauth:', adminauth);
+  // const adminauth = app.middleware.adminauth();
   router.get('/admin/index', controller.admin.main.index);
   router.post('/admin/checkLogin', controller.admin.main.checkLogin);
   router.get('/admin/getTypeInfo', jwt, controller.admin.main.getTypeInfo);
